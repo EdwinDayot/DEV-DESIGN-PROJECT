@@ -1,0 +1,206 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Points inclus dans un p&eacute;rim&egrave;tre - Google Map V3</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+     <style type="text/css">
+	html { overflow: hidden; }
+
+
+#default_map{ width: 100%; height: 500px;}
+
+
+	</style>
+  </head>
+
+  <body>
+    <div id="default_map"></div>
+	
+  <script type="text/javascript">
+/* D�claration du centre de la map */ 
+var map;
+var points = [];
+var position = [];
+var coords = [];
+var allLines = [];
+var markers = [];
+var polyObj = '';
+var polylineObj = '';
+var i = 0;
+var m = 0;
+var monCercle = '';
+var rayon = 0;
+var image = 'images/pin.png';
+var pp = new Array(
+new google.maps.LatLng(48.865475536701055, 2.363518380517564),
+new google.maps.LatLng(48.865136763956734, 2.3418890470214704),
+new google.maps.LatLng(48.85847376725376, 2.3506437772460798),
+new google.maps.LatLng(48.84977665762942, 2.3393141263671735),
+new google.maps.LatLng(48.84909889732242, 2.3609434598632673),
+new google.maps.LatLng(48.85135806266887, 2.3585402005859235),
+new google.maps.LatLng(48.85180988350612, 2.3307310575195173),
+new google.maps.LatLng(48.850793280888546, 2.3478971952148298),
+new google.maps.LatLng(48.85677964361455, 2.3547636502929548),
+new google.maps.LatLng(48.865136763956734, 2.3336493009277204),
+new google.maps.LatLng(48.84796927642389, 2.3571669095702985),
+new google.maps.LatLng(48.86728228593892, 2.3504721158691266)
+);
+
+
+
+        
+        
+$(function(){
+		var centerMap;
+		geocoder = new google.maps.Geocoder();
+		geocoder.geocode( { 'address': 'Paris , France'}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+				centerMap = map.setCenter(results[0].geometry.location);
+			}else	
+				centerMap = new google.maps.LatLng(48.8734931945801, 2.3525333404541);
+		});
+	 var myOptions = {
+			zoom: 13,
+			center: centerMap,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		}
+	 map = new google.maps.Map(document.getElementById('default_map'), myOptions);
+		
+		google.maps.event.addListener(map,'click',function(event){
+			// alert(event.latLng);
+			if(i < 2)
+				addMarker(event.latLng);
+		});
+		
+		
+		
+		
+		function addMarker(latlng){	
+			var indice = i;
+			var customicon = new google.maps.MarkerImage(
+				image,
+				new google.maps.Size(16,16),
+				new google.maps.Point(0,0),
+				new google.maps.Point(0,15)
+			);
+						
+			var m = new google.maps.Marker({position:latlng,map:map,icon: customicon});
+			m.setDraggable(true);
+			points.push(m);
+			coords.push(m['position']);
+			google.maps.event.addListener(m,'click',function(){
+				drawPolygon(indice);
+			});
+			
+			google.maps.event.addListener(m,'dragend',function(event){				
+				if(i == 2){		
+					if(monCercle)
+						monCercle.setMap(null);	
+					allLines[0].setMap(null);	
+					allLines = new Array();					
+					coords = new Array();
+					coords.push(points[0]['position']);
+					coords.push(points[1]['position']);
+					polylineObj = new google.maps.Polyline({path:coords,strokeColor:"#FF0000",strokeOpacity:1.0,strokeWeight:2,map: map});
+					allLines.push(polylineObj);
+					points[indice]['position'] = event.latLng;
+					tracePerimetre();
+				}
+			});
+			
+			if(points.length>1){
+				polylineObj = new google.maps.Polyline({path:coords,strokeColor:"#FF0000",strokeOpacity:1.0,strokeWeight:2,map: map});
+				allLines.push(polylineObj);
+			}
+			if(i == 1)
+				tracePerimetre();
+				
+			i++;
+		}
+		
+		function drawPolygon(indice){
+			if(indice == 0 && i > 2){
+				coords.push(points[0]['position']);
+				polyObj = new google.maps.Polygon({path:coords,strokeColor:"#FF0000",strokeOpacity:1.0,strokeWeight:2,fillColor: "#FF0000",fillOpacity: 0.35,map: map});
+				for(var p = 0; p < points.length; p++)	
+					points[p].setMap(null);
+			}
+			else if(indice == 0 && i < 3)
+				alert('Un polygone n�cessite au moins 3 points !');
+			else
+				alert('Cliquez sur le premier pour fermer ..'+indice );				
+		}
+		 
+	});	
+	
+	function tracePerimetre(){
+		rayon = distance(points[0]['position'].lat(),points[0]['position'].lng(),points[1]['position'].lat(),points[1]['position'].lng());
+		 var optionsCercle = {
+				center: points[0]['position'],
+				map: map,
+				radius: rayon
+		 }
+     monCercle = new google.maps.Circle(optionsCercle);
+		 for(var mark = 0; mark < markers.length; mark++){
+			var dm = distance(points[0]['position'].lat(),points[0]['position'].lng(),markers[mark].position.lat(),markers[mark].position.lng());
+			if(dm > rayon)
+				markers[mark].setMap(null);
+		 }
+		 
+		 for(var o = 0; o < pp.length; o++){
+			var dm = distance(points[0]['position'].lat(),points[0]['position'].lng(),pp[o].lat(),pp[o].lng());
+			if(dm <= rayon){
+				var marker = new google.maps.Marker({
+					map: map, 
+					position: pp[o]
+				});
+				markers.push(marker);
+			}
+		 }
+	}
+	
+	
+	function distance(lat1,lon1,lat2,lon2) {
+		var R = 6371; 
+		var dLat = (lat2-lat1) * Math.PI / 180;
+		var dLon = (lon2-lon1) * Math.PI / 180;
+		var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+				Math.cos(lat1 * Math.PI / 180 ) * Math.cos(lat2 * Math.PI / 180 ) *
+				Math.sin(dLon/2) * Math.sin(dLon/2);
+		
+		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+		var d = R * c;
+		
+		d = Math.round(d*1000);
+		
+		if(d < 200)
+			d = 200;
+			
+		return d;
+	}
+
+	
+	 $('#reset').click(function(){ 
+			for(var l = 0; l < allLines.length; l++)
+				allLines[l].setMap(null);
+			for(var l = 0; l < points.length; l++)
+				points[l].setMap(null);
+			points = new Array();
+			allLines = new Array();
+			coords = new Array();
+			i = 0;
+			var indice = 0;
+			if(polyObj)
+				polyObj.setMap(null);
+			if(monCercle)
+				monCercle.setMap(null);
+	 });		 
+
+
+  </script>
+  </body>
+</html>

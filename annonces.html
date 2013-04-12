@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<meta charset='utf-8'>
+<title>Place4home - Consulter les annonces</title>
+<meta content='#/homepage' property='og:url'>
+<meta content='website' property='og:type'>
+<meta content='#/images/communities/logos/501/header/miromesnil_logo.png' property='og:image'>
+<meta content='adminnameid' property='fb:admins'>
+<meta content='Place 4Voisinage Miromesnil' property='og:title'>
+<meta content='Place4 Voisinage Miromesnil' property='og:site_name'>
+<meta content='Site annonces entre voisins' property='og:description'>
+
+<!-- CSS -->
+<link rel="stylesheet" href="assets/css/membre.css" type="text/css" />
+<link rel="stylesheet" href="assets/css/bublebox.css" type="text/css" />
+<link rel="stylesheet" href="assets/css/map.css" type="text/css" />
+<link rel="stylesheet" href="assets/css/footer.css" type="text/css" />
+<link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+<link rel="stylesheet" href="assets/css/editor.css" type="text/css" />
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+
+
+</head>
+<body onload="initialiser()">
+<header id="header">  <!-- header -->
+  <div class="top-navbar">
+    <div class="navbar-inner">
+      <div class="container"> <a class="brand" href="index.html" style="font-family:'billabong'; font-size: 35px;">Place4home</a>
+        <ul class="nav">
+          <li class="menuli"><a href="annonces.html">Annonces</a></li>
+          <li class="menuli"><a href="user.html">Mon profile</a></li>
+          <li class="menuli">
+            <form class="navbar-form search-area">
+              <input class="span2" type="text" placeholder="Search">
+              <button type="submit" class="btn">Publier Annonce</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+      <!-- end nav --> 
+    </div>
+  </div>
+</header>
+<section class='street-header'>   <!-- begin section -->
+  
+  
+  <!--  MAP ZONE -->
+  
+  <div id="default_map" class="coverimage">
+  
+  <!-- IFRAME SEARCHBOX SANS FUSION -->
+  <iframe width="1200" height="500" scrolling="no" frameborder="no" src="maps/map.html"></iframe>
+  
+
+  
+  </div>
+  
+  
+  <div class='wrapper'>
+  <div class='street-logo'> <a href='/'> <img alt="street_logo" src="assets/img/idea-brand.png" /> </a> </div>
+ 
+  <div class='street-navigation'>
+    <div class='wrapper'>
+      <!--   menu quartier --> 
+      <nav class='street-actions actions-menu'> 
+        <a class='first-child selected' href='membre.html' title='Home'> <i class='#'></i><div class='text-with-icon hidden'>Home</div></a> 
+        <a class='' href='#i' title='New listing'> <i class='#'></i><div class='text-with-icon hidden'>New Annonces</div></a> 
+        <a class='' href='#' title='Community'> <i class='#'></i><div class='text-with-icon hidden'>Voisinage</div></a>
+      </nav> <!--  end menu quartier --> 
+      
+    </div>
+  </div>
+</header>  <!-- end real header -->
+
+
+<section class='street-header'>   <!-- begin section -->
+  
+  
+  <div class='page-content'>  <!-- ALTTTT begin annonce content -->
+        
+          <div class='feed-navigation'>
+            
+            
+            <!-- feed action 2-->
+            <div class='feed-actions actions-menu'> <a class='request-link' href='#'> <i class='#'></i>
+              <div class='text-with-icon' id='post_new_listing'>Répondre !</div></a>
+            </div>
+          
+            
+            
+            <form class="form-wrapper cf">
+                <a href="form.html"><button type="submit">Poster l'annonce !</button></a>
+                <input type="text" placeholder="Mon annonce" required>
+                <input type="text" placeholder="Mon adresse" required>
+                <input type="text" placeholder="Destinataire" required>
+                 
+            </form>
+            
+            
+          </div> <!-- End feedaction -->
+      
+                  <div id="masterbublebox"><!-- master buble box -->   
+                          <!-- ZOOM bublebox CHAQUE annonce --> 
+                              
+                              <div class="buble zoombox">
+                                <div class="arrow"></div>
+                                 <h3 href="#" class="buble-title">Annonce - Marianne James</h3></a>
+                                <div class="buble-content">
+                                       <!-- text annonce -->
+                                       <p class="bubletxt">Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                                       <div class='item-image'>
+                                       <a href='#' id='listing-image-link'>
+                                       <img alt="object to show or sale" src="assets/img/cheval.png" />
+                                       </a>
+                                       </div>
+                                        <!-- Auteur -->
+                                       <div class='annonce-author'>
+                                           <div class='annonce-author-image'>
+                                               <a href="#autorprofile"><img alt="author" src="assets/img/lea.jpg" /></a>
+                                           </div>
+                                           <div class='annonce-author-description'>
+                                               <h3>
+                                               Offered by
+                                               <a href="#autorprofile" id="annonce_author_link">Marianne James</a>
+                                               </h3>
+                                            </div>
+                                        </div>
+                                        <!-- infos Annonce time vues -->
+                                       <ul class='buble-info'>
+                                           <li class='icon-with-text-container'>
+                                               <i class='ss-calendar icon-part'></i>
+                                               <div class='text-part'>
+                                                   Created 22 hours ago
+                                               </div>
+                                           </li>
+                                           <li class='icon-with-text-container'>
+                                               <i class='ss-view icon-part'></i>
+                                               <div class='text-part'>
+                                                   Viewed
+                                                   47 times
+                                               </div>
+                                           </li>
+                                       </ul> 
+                                </div>
+                          </div>  <!-- END CHAQUE ANNONCE -->
+                          
+                          <!-- ZOOM bublebox CHAQUE annonce --> 
+                              
+                              <div class="buble zoombox">
+                                <div class="arrow"></div>
+                                 <h3 href="#" class="buble-title">Annonce - Marianne James</h3></a>
+                                <div class="buble-content">
+                                       <!-- text annonce -->
+                                       <p class="bubletxt">Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                                       <div class='item-image'>
+                                       <a href='#' id='listing-image-link'>
+                                       <img alt="object to show or sale" src="assets/img/cheval.png" />
+                                       </a>
+                                       </div>
+                                        <!-- Auteur -->
+                                       <div class='annonce-author'>
+                                           <div class='annonce-author-image'>
+                                               <a href="#autorprofile"><img alt="author" src="assets/img/lea.jpg" /></a>
+                                           </div>
+                                           <div class='annonce-author-description'>
+                                               <h3>
+                                               Offered by
+                                               <a href="#autorprofile" id="annonce_author_link">Marianne James</a>
+                                               </h3>
+                                            </div>
+                                        </div>
+                                        <!-- infos Annonce time vues -->
+                                       <ul class='buble-info'>
+                                           <li class='icon-with-text-container'>
+                                               <i class='ss-calendar icon-part'></i>
+                                               <div class='text-part'>
+                                                   Created 22 hours ago
+                                               </div>
+                                           </li>
+                                           <li class='icon-with-text-container'>
+                                               <i class='ss-view icon-part'></i>
+                                               <div class='text-part'>
+                                                   Viewed
+                                                   47 times
+                                               </div>
+                                           </li>
+                                       </ul> 
+                                </div>
+                          </div>  <!-- END CHAQUE ANNONCE -->
+                          
+                          <!-- ZOOM bublebox CHAQUE annonce --> 
+                              
+                              <div class="buble zoombox">
+                                <div class="arrow"></div>
+                                 <h3 href="#" class="buble-title">Annonce - Marianne James</h3></a>
+                                <div class="buble-content">
+                                       <!-- text annonce -->
+                                       <p class="bubletxt">Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                                       <div class='item-image'>
+                                       <a href='#' id='listing-image-link'>
+                                       <img alt="object to show or sale" src="assets/img/cheval.png" />
+                                       </a>
+                                       </div>
+                                        <!-- Auteur -->
+                                       <div class='annonce-author'>
+                                           <div class='annonce-author-image'>
+                                               <a href="#autorprofile"><img alt="author" src="assets/img/lea.jpg" /></a>
+                                           </div>
+                                           <div class='annonce-author-description'>
+                                               <h3>
+                                               Offered by
+                                               <a href="#autorprofile" id="annonce_author_link">Marianne James</a>
+                                               </h3>
+                                            </div>
+                                        </div>
+                                        <!-- infos Annonce time vues -->
+                                       <ul class='buble-info'>
+                                           <li class='icon-with-text-container'>
+                                               <i class='ss-calendar icon-part'></i>
+                                               <div class='text-part'>
+                                                   Created 22 hours ago
+                                               </div>
+                                           </li>
+                                           <li class='icon-with-text-container'>
+                                               <i class='ss-view icon-part'></i>
+                                               <div class='text-part'>
+                                                   Viewed
+                                                   47 times
+                                               </div>
+                                           </li>
+                                       </ul> 
+                                </div>
+                          </div>  <!-- END CHAQUE ANNONCE -->
+                          
+                          <!-- ZOOM bublebox CHAQUE annonce --> 
+                              
+                              <div class="buble zoombox">
+                                <div class="arrow"></div>
+                                 <h3 href="#" class="buble-title">Annonce - Marianne James</h3></a>
+                                <div class="buble-content">
+                                       <!-- text annonce -->
+                                       <p class="bubletxt">Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                                       <div class='item-image'>
+                                       <a href='#' id='listing-image-link'>
+                                       <img alt="object to show or sale" src="assets/img/cheval.png" />
+                                       </a>
+                                       </div>
+                                        <!-- Auteur -->
+                                       <div class='annonce-author'>
+                                           <div class='annonce-author-image'>
+                                               <a href="#autorprofile"><img alt="author" src="assets/img/lea.jpg" /></a>
+                                           </div>
+                                           <div class='annonce-author-description'>
+                                               <h3>
+                                               Offered by
+                                               <a href="#autorprofile" id="annonce_author_link">Marianne James</a>
+                                               </h3>
+                                            </div>
+                                        </div>
+                                        <!-- infos Annonce time vues -->
+                                       <ul class='buble-info'>
+                                           <li class='icon-with-text-container'>
+                                               <i class='ss-calendar icon-part'></i>
+                                               <div class='text-part'>
+                                                   Created 22 hours ago
+                                               </div>
+                                           </li>
+                                           <li class='icon-with-text-container'>
+                                               <i class='ss-view icon-part'></i>
+                                               <div class='text-part'>
+                                                   Viewed
+                                                   47 times
+                                               </div>
+                                           </li>
+                                       </ul> 
+                                </div>
+                          </div>  <!-- END CHAQUE ANNONCE -->
+              
+              </div> <!-- end master buble box -->   
+          
+          
+      </div> <!-- ALTTT  END page content -->
+  
+  
+</div> <!-- end wrapper -->
+</section>  <!-- end section -->
+
+
+
+<!-- SCRIPTS -->
+
+
+
+
+</body>
+</html>
