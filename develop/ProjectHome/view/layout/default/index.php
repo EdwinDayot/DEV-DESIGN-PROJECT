@@ -1,7 +1,12 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8">
-    <title>Project4Home</title>
+    <?php $configs = $this->request('Configs','getConfig'); ?>
+    <?php foreach ($configs as $configs): ?>
+      <?php if ($configs->name == 'title'): ?>
+        <title><?php echo isset($title_for_layout)?$title_for_layout:$configs->value; ?></title>
+      <?php endif ?>
+    <?php endforeach ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">

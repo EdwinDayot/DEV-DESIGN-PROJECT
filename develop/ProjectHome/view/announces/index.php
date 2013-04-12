@@ -6,16 +6,19 @@
 
 </div>
 <div class="row">
+	<?php $users = $this->request('Users','getUsers'); ?>
 	<?php foreach ($announces as $k => $v): ?>
 
 	    <div class="span4">
-			<h2>
-				<u>user_id :</u> <?php echo $v->user_id; ?>
-			</h2>
-			<u>content :</u> 		
-			<p><?php echo $v->content; ?></p>
-			<u>address :</u>
-			<p><?php echo $v->address; ?></p>
+	    	<blockquote>
+	    		<small><?php echo $v->address; ?></small><br>
+				<?php foreach ($users as $u): ?>
+					<?php if ($u->id == $v->user_id): ?>
+						<b><?php echo $u->firstname.' '.$u->lastname ?></b>.
+					<?php endif ?>
+				<?php endforeach ?>	
+				<p><?php echo $v->content; ?></p>
+	    	</blockquote>
 			<p><a href="<?php echo Router::url("announces/view/{$v->id}"); ?>" class="btn">Répondre &raquo;</a></p>
 		</div>
 		

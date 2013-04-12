@@ -1,6 +1,6 @@
 <?php
 
-	class Announce extends Model{
+	class User extends Model{
 
 		var $validate = array(
 			'content' => array(

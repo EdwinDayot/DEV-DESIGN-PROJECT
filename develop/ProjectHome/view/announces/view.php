@@ -1,6 +1,6 @@
 <?php
 
-	$title_for_layout = $announce->user_id;
+	$title_for_layout = 'Annonce - '.$announce->user_id;
 
 ?>
 <h2>user_id de l'annonce : <?php echo $announce->user_id; ?></h2>

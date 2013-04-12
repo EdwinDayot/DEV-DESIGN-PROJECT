@@ -1,6 +1,7 @@
 <?php
 
 	class Comment extends Model{
+
 		var $validate = array(
 			'content' => array(
 				'rule' 		=> 'notEmpty',
@@ -34,6 +35,7 @@
 			}
 			return false;
 		}
+		
 	}
 
 ?>
