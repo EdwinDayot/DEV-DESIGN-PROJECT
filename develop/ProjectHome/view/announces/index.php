@@ -21,12 +21,5 @@
 		
 	<?php endforeach ?>
 </div>
-<div class="pagination">
-    <ul>
-    	<?php for($i=1; $i <= $page; $i++): ?>
-    		<li <?php if($i==$this->request->page){ echo 'class="active"'; }?>><a href="?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-    	<?php endfor; ?>
-    </ul>
-</div>
 
 <?php require_once(ROOT.DS.'view'.DS.'announces'.DS.'post.php'); ?>

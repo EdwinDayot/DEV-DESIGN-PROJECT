@@ -15,12 +15,10 @@
 				'type'	=> 'asking'
 				);
 			$d['announces'] = $this->Announce->find(array(
-				'conditions'=> $condition,	
-				'limit'		=> ($perPage*($this->request->page-1)).','.$perPage,
+				'conditions'=> $condition,
 				'order'		=> $order
 				));
 			$d['total'] = $this->Announce->findCount($condition);
-			$d['page'] = ceil($d['total'] / $perPage);
 			$this->set($d);
 
 		}
