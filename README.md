@@ -3,9 +3,9 @@ DEV-DESIGN-PROJECT
 
 Projet de fin d'année 2012-2013
 
-Branche design :<br>
+<u>Branche design :</u><br>
 └ Design brut<br>
-Branche intégration :<br>
+<u>Branche intégration :</u><br>
 └ Design + dev, équivalent trunk<br>
-Branche develop :<br>
+<u>Branche develop :</u><br>
 └ Developpement des fonctions principales<br>
