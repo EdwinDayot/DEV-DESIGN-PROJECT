@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <?php $configs = $this->request('Configs','getConfig'); ?>
     <?php foreach ($configs as $configs): ?>
-      <?php if ($configs->name == 'title'): ?>
+      <?php if ($configs->name == 'title_for_layout'): ?>
         <title><?php echo isset($title_for_layout)?$title_for_layout:$configs->value; ?></title>
       <?php endif ?>
     <?php endforeach ?>
@@ -61,6 +61,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="<?php echo Router::url('announces/post'); ?>">Poster une annonce</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="<?php echo Router::url('users/profile'); ?>">Ma porte</a></li>
               </ul>
             </div><!--/.nav-collapse -->
           </div>

@@ -25,6 +25,7 @@
 
 		function post($id = null){
 			$this->loadModel('Announce');
+			debug($_SESSION);
 			$condition = array('type' => 'asking');
 			if($id === null){
 				$announce = $this->Announce->findFirst(array(
@@ -45,6 +46,9 @@
 				if($this->Announce->validates($this->request->data)){
 					$this->request->data->created = date('Y-m-d H:i:s');
 					$this->request->data->solved = 0;
+					if($this->Session->isLogged()){
+						$this->request->data->user_id = $this->Session->user('id');
+					}
 					$this->request->data->type = 'asking';
 					$this->Announce->save($this->request->data);
 					$id = $this->Announce->id;

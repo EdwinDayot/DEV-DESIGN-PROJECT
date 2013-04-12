@@ -1,3 +1,9 @@
+<?php
+
+	$title_for_layout = 'Connexion';
+
+?>
+
 <div class="page-header">
 	<h2>Connexion</h2>
 </div>

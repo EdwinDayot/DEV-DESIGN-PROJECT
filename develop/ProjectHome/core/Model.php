@@ -95,7 +95,7 @@
 			return current($this->find($req));
 		}
 
-		public function findCount($conditions){
+		public function findCount($conditions = null){
 			$res = $this->findFirst(array(
 				'fields' 		=> 'COUNT('.$this->primaryKey.') as count',
 				'conditions'	=> $conditions
