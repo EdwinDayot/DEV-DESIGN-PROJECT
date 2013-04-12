@@ -25,7 +25,6 @@
 
 		function post($id = null){
 			$this->loadModel('Announce');
-			debug($_SESSION);
 			$condition = array('type' => 'asking');
 			if($id === null){
 				$announce = $this->Announce->findFirst(array(
