@@ -58,9 +58,10 @@
             <div class="nav-collapse collapse">
               <ul class="nav">
                 <li class="active"><a href="<?php echo Router::url(''); ?>">Home</a></li>
-                <li><a href="#about">About</a></li>
                 <li><a href="<?php echo Router::url('announces/post'); ?>">Poster une annonce</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="<?php echo Router::url('users/register'); ?>">S'enregistrer</a></li>
+                <li><a href="<?php echo Router::url('users/signin'); ?>">Connexion</a></li>
+                <li><a href="<?php echo Router::url('users/signout'); ?>">Déconnexion</a></li>
                 <li><a href="<?php echo Router::url('users/profile'); ?>">Ma porte</a></li>
               </ul>
             </div><!--/.nav-collapse -->
