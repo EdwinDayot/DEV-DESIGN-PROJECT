@@ -1,85 +1,62 @@
+<!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <?php $configs = $this->request('Configs','getConfig'); ?>
-    <?php foreach ($configs as $configs): ?>
-      <?php if ($configs->name == 'title_for_layout'): ?>
-        <title><?php echo isset($title_for_layout)?$title_for_layout:$configs->value; ?></title>
-      <?php endif ?>
-    <?php endforeach ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset='utf-8'>
+<title>Place4home - Consulter les annonces</title>
+<meta content='#/homepage' property='og:url'>
+<meta content='website' property='og:type'>
+<meta content='#/images/communities/logos/501/header/miromesnil_logo.png' property='og:image'>
+<meta content='adminnameid' property='fb:admins'>
+<meta content='Place 4Voisinage Miromesnil' property='og:title'>
+<meta content='Place4 Voisinage Miromesnil' property='og:site_name'>
+<meta content='Site annonces entre voisins' property='og:description'>
 
-    <!-- Le styles -->
-    <link href="<?php echo Router::webroot('css/bootstrap.css'); ?>" rel="stylesheet">
-    <style>
-      html,
-      body {
-        height: 100%;
-      }
+<!-- CSS -->
+<link href="<?php echo Router::webroot('css/membre.css'); ?>" rel="stylesheet">
+<link href="<?php echo Router::webroot('css/bublebox.css'); ?>" rel="stylesheet">
+<link href="<?php echo Router::webroot('css/map.css'); ?>" rel="stylesheet">
+<link href="<?php echo Router::webroot('css/footer.css'); ?>" rel="stylesheet">
+<link href="<?php echo Router::webroot('css/style.css'); ?>" rel="stylesheet">
+<link href="<?php echo Router::webroot('css/editor.css'); ?>" rel="stylesheet">
 
-      #wrap{
-        min-height: 100%;
-        height: auto !important;
-        height: 100%;
-        margin: 0 auto -60px;
-      }
 
-      #wrap > .container{
-        padding-top: 60px;
-      }
 
-      #footer{
-        height: 60px;
-      }
-      #footer{
-        background: #f5f5f5;
-      }
-
-      .container .credit {
-        margin: 20px 0;
-      }
-    </style>
-    <link href="<?php echo Router::webroot('css/bootstrap-responsive.css'); ?>" rel="stylesheet">
-  </head>
-
-  <body>
-    <div id="wrap">
-      <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container">
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="brand" href="<?php echo Router::url(''); ?>">Project4Home</a>
-            <div class="nav-collapse collapse">
-              <ul class="nav">
-                <li class="active"><a href="<?php echo Router::url(''); ?>">Home</a></li>
-                <li><a href="<?php echo Router::url('announces/post'); ?>">Poster une annonce</a></li>
-                <li><a href="<?php echo Router::url('users/register'); ?>">S'enregistrer</a></li>
-                <li><a href="<?php echo Router::url('users/signin'); ?>">Connexion</a></li>
-                <li><a href="<?php echo Router::url('users/signout'); ?>">Déconnexion</a></li>
-                <li><a href="<?php echo Router::url('users/profile'); ?>">Ma porte</a></li>
-              </ul>
-            </div><!--/.nav-collapse -->
-          </div>
-        </div>
+</head>
+<body onload="initialiser()">
+<header id="header">  <!-- header -->
+  <div class="top-navbar">
+    <div class="navbar-inner">
+      <div class="container"> <a class="brand" href="<?php echo Router::url(''); ?>" style="font-family:'billabong'; font-size: 35px;">Place4home</a>
+        <ul class="nav">
+          <li class="menuli"><a href="<?php echo Router::url(''); ?>">Annonces</a></li>
+          <li class="menuli"><a href="<?php echo Router::url('user/profile/id:'$_SESSION['User']->id); ?>">Mon profile</a></li>
+          <li class="menuli">
+            <form class="navbar-form search-area">
+              <input class="span2" type="text" placeholder="Search">
+              <button type="submit" class="btn"><a href="<?php echo Router::url('announces/post'); ?>">Poster une annonce</a></button>
+              
+            </form>
+          </li>
+        </ul>
       </div>
-
-      <div class="container">
-
-        <?php echo $this->Session->flash(); ?>
-        <?php echo $content_for_layout; ?>
-
-      </div> <!-- /container -->
+      <!-- end nav --> 
     </div>
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="<?php echo Router::webroot('js/bootstrap.js'); ?>"></script>
+  </div>
+</header>
 
-  </body>
+  
+
+                        <?php echo $this->Session->flash(); ?>
+                        <?php echo $content_for_layout; ?>
+          
+          
+
+
+
+
+<!-- SCRIPTS -->
+
+
+
+
+</body>
 </html>
