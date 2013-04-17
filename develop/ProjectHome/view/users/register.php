@@ -16,6 +16,12 @@
 	<label for="inputlastname">Nom</label>
 	<?php echo $this->Form->input('lastname', 'Nom'); ?>
 
+	<label for="inputaddress">Adresse</label>
+	<?php echo $this->Form->input('address', 'Adresse'); ?>
+
+	<label for="inputmail">Mail</label>
+	<?php echo $this->Form->input('mail', 'Mail'); ?>
+
 	<div class="form-actions">
 		<button type="submit" class="btn btn-primary">Envoyer</button>
 	</div>
