@@ -28,7 +28,10 @@
       <div class="container"> <a class="brand" href="<?php echo Router::url(''); ?>" style="font-family:'billabong'; font-size: 35px;">Place4home</a>
         <ul class="nav">
           <li class="menuli"><a href="<?php echo Router::url(''); ?>">Annonces</a></li>
-          <li class="menuli"><a href="<?php echo Router::url('user/profile/id:'$_SESSION['User']->id); ?>">Mon profile</a></li>
+          <li class="menuli"><a href="<?php echo Router::url('user/profile/id:'.$_SESSION['User']->id); ?>">Mon profil</a></li>
+          <li class="menuli"><a href="<?php echo Router::url('users/signin'); ?>">Connexion</a></li>
+          <li class="menuli"><a href="<?php echo Router::url('users/signout'); ?>">Déconnexion</a></li>
+          <li class="menuli"><a href="<?php echo Router::url('users/register'); ?>">S'inscrire</a></li>
           <li class="menuli">
             <form class="navbar-form search-area">
               <input class="span2" type="text" placeholder="Search">
