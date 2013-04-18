@@ -1,15 +1,11 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
 body {
-	  background:#ffffff url('http://givenget.eu/place4/ruelle.png')no-repeat center center fixed;
-  	-webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  background-size: cover;
-    padding-top:100px;
+
+    padding-top:50px;
 }
 
-form {
+.connection {
     margin-left:auto;
     margin-right:auto;
     width: 343px;
@@ -31,7 +27,7 @@ form {
 
 
 
-input {
+#inputlastname , #inputfirstname , #inputpassword , #inputlogin {
     width: 276px;
     height: 48px;
     border: 1px solid rgba(255,255,255,.4);
@@ -55,7 +51,7 @@ input[type=submit] {
     margin-right: 100px;
 }
 
-input.name {
+.connection input {
 	  background: rgba(255, 255, 255, 0.4) url(../ico/gemicon_email.png) no-repeat scroll 16px 16px; 
 	  padding-left:75px;
 	  margin-left: 30px;
@@ -95,7 +91,9 @@ input:focus, textarea:focus {
 	  overflow: hidden; 
 }
 
-.btn {
+.sendconnection {
+      margin: 0px 0;
+      margin-right: 30%;
 	  width: 138px;
 	  height: 44px;
 	  border: 1px solid #253737;
