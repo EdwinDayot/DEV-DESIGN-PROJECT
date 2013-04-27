@@ -1,4 +1,6 @@
-
+body {
+padding-top: 40px !important;
+}
 
 a {
 color: #C42F2F;
@@ -14,12 +16,13 @@ height: 200px;
 
 
 #masterbublebox {
-    position: relative;
     overflow: scroll;
-    position: relative;
     float: right;
     width: 60%;
-    height: 210px;
+    height: 200px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #b0b0b0;
 }
 
 #editor {
@@ -69,11 +72,12 @@ margin-right: auto;
 
 
 
-.wrapper {
+.menuwrapper {
 background: white;
 position: relative;
 margin: 0 auto;
 max-width: 90%;
+z-index: 20;
 }
 
 

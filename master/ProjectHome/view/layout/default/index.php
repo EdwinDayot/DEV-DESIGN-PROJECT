@@ -23,7 +23,7 @@
 
 
 </head>
-<body onload="initialiser()">
+<body>
 <header id="header">  <!-- header -->
     <div class="navbar-inner">
       <div class="brandcontainer"> <a class="brand" href="<?php echo Router::url(''); ?>" style="font-family:'billabong'; font-size: 35px;">Place4home</a>

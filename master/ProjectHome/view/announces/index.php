@@ -1,9 +1,8 @@
 
-<body onload="initialiser()">
+<body>
 
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
 
-<script src="js/jquery.js" type="text/javascript"></script>
 <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
@@ -27,13 +26,93 @@
   
   </div> <!-- END FORM -->
   
+  
+  
+  
+    <div id="masterbublebox"><!-- master buble box -->  
+            <a class="leaflet-popup-close-button" href="#close">×</a>
+        
+                <?php foreach ($announces as $k => $v): ?> 
+                <!-- ZOOM bublebox CHAQUE annonce --> 
+            
+          <!-- ZOOM bublebox // annonce --> 
+              
+              <div class="buble zoombox">
+                <div class="arrow"></div>
+                 <h3 href="#" class="buble-title"  data-lat="<?php echo $v->lat; ?>" data-lng="<?php echo $v->lng; ?>" >Annonce - <?php echo $v->user_id; ?></h3></a>
+                <div class="buble-content">
+                       <!-- text annonce -->
+                       <p class="bubletxt"><?php echo $v->content; ?></p>
+                       <div class='item-image'>
+  
+                       </div>
+                        <!-- Auteur -->
+                       <div class='annonce-author'>
+                           <div class='annonce-author-image'>
+                               <a href="#autorprofile"><img alt="author" src="#" /></a>
+                           </div>
+                           <div class='annonce-author-description'>
+                               <h3>
+                               Adresse : 
+                               <a href="<?php echo Router::url("announces/view/id:{$v->id}"); ?>" id="annonce_author_link"><?php echo $v->address; ?></a>
+                               </h3>
+                            </div>
+                        </div>
+  
+  
+                        <!-- infos Annonce time vues -->
+                       <ul class='buble-info'>
+                           <li class='icon-with-text-container'>
+                               <i class='ss-calendar icon-part'></i>
+                               <div class='text-part'>
+                                   Created 22 hours ago
+                               </div>
+                           </li>
+                           <li class='icon-with-text-container'>
+                               <i class='ss-view icon-part'></i>
+                               <div class='text-part'>
+                                   Viewed
+                                   47 times
+                               </div>
+                           </li>
+                       </ul>
+                       
+                </div>
+              </div>
+              
+              
+              	
+              	<?php endforeach ?>
+          </div><!-- END master buble box --> 
+              
+              
+              
+              
+  
   <!--  MAP ZONE -->
   
           <div id="map"></div>
           
           <style>
           
-          #map { width: 100%; height: 380px; margin: 0 0 0 0px;
+          #map { width: 100%; height: 600px; margin: 0 0 0 0px;
+          }
+          
+          .leaflet-popup-content-wrapper {
+              max-width: 250px;
+          }
+          
+          .display {
+              position: fixed;
+              margin-top: 30%;
+              margin-left: 30%;
+              z-index: 10;
+          }
+          
+          .leaflet-popup-close-button {
+              margin-top: 20px;
+              margin-left: 600px;
+              z-index: 15;
           }
           </style>
           
@@ -44,16 +123,16 @@
   </div>
   
   
-  <div class='wrapper'>
+  <div class='menuwrapper'>
   <div class='street-logo'> <a href='/'> <img alt="street_logo" src="#" /> </a> </div>
  
   <div class='street-navigation'>
     
       <!--   menu quartier --> 
       <nav class='street-actions actions-menu'> 
-        <a class='first-child selected' href='#' title='Home'> <i class='#'></i><div class='text-with-icon hidden'>Home</div></a> 
-        <a class='' href='#i' title='New listing'> <i class='#'></i><div class='text-with-icon hidden'>New Annonces</div></a> 
-        <a class='' href='#' title='Community'> <i class='#'></i><div class='text-with-icon hidden'>Voisinage</div></a>
+        <a class='first-child selected' href='#' title='Home'><div class='text-with-icon hidden'>Home</div></a> 
+        <a class='addbox' href='#i' title='New listing'><div class='text-with-icon hidden'>Annonces List</div></a> 
+        <a class='' href='#' title='Community'><div class='text-with-icon hidden'>Voisinage</div></a>
       </nav> <!--  end menu quartier --> 
       
     </div>
@@ -73,94 +152,14 @@
             <div class='feed-actions actions-menu'> <a class='request-link' href='#'> <i class='#'></i>
               <div class='text-with-icon' id='post_new_listing'>Répondre !</div></a>
             </div>
-          
-            
-            
-            <form class="form-wrapper cf" action="<?php echo Router::url('announces/post/'.$id); ?>" method="post">
-                <?php echo $this->Form->input('id','hidden'); ?>
-                <?php echo $this->Form->input('user_id', 'hidden'); ?>
-                
-                <a href="#"><button type="submit">Poster l'annonce !</button></a>
-                <label for="inputcontent"></label>
-                <?php echo $this->Form->input('content','Contenu',array(
-                	'type' => 'textarea',
-                	'class' => 'input-xxlarge wysiwyg',
-                	'rows'	=> 10,
-                	'placeholder' => 'Annonce'
-                )); ?>
-                <label for="inputaddress"></label>
-                <?php echo $this->Form->input('address', 'Lieu' , array( 'placeholder' => 'Location')); ?>
-                <!-- MARCHE PAS -->
-                <!--<label for="inputaddress"></label>
-                <?php echo $this->Form->input('name', 'Nom' , array( 'placeholder' => 'Nom')); ?>
-                <input type="text" placeholder="Mon Nom" required>-->
-                 
-            </form>
-            
-            
-          </div> <!-- End feedaction -->
-
-
-
-      
-      <div id="masterbublebox"><!-- master buble box -->  
-      
-              <?php foreach ($announces as $k => $v): ?> 
-              <!-- ZOOM bublebox CHAQUE annonce --> 
-          
-        <!-- ZOOM bublebox // annonce --> 
-            
-            <div class="buble zoombox">
-              <div class="arrow"></div>
-               <h3 href="#" class="buble-title"  data-lat="<?php echo $v->lat; ?>" data-lng="<?php echo $v->lng; ?>" >Annonce - <?php echo $v->user_id; ?></h3></a>
-              <div class="buble-content">
-                     <!-- text annonce -->
-                     <p class="bubletxt"><?php echo $v->content; ?></p>
-                     <div class='item-image'>
-
-                     </div>
-                      <!-- Auteur -->
-                     <div class='annonce-author'>
-                         <div class='annonce-author-image'>
-                             <a href="#autorprofile"><img alt="author" src="assets/img/lea.jpg" /></a>
-                         </div>
-                         <div class='annonce-author-description'>
-                             <h3>
-                             Adresse : 
-                             <a href="<?php echo Router::url("announces/view/id:{$v->id}"); ?>" id="annonce_author_link"><?php echo $v->address; ?></a>
-                             </h3>
-                          </div>
-                      </div>
-
-
-                      <!-- infos Annonce time vues -->
-                     <ul class='buble-info'>
-                         <li class='icon-with-text-container'>
-                             <i class='ss-calendar icon-part'></i>
-                             <div class='text-part'>
-                                 Created 22 hours ago
-                             </div>
-                         </li>
-                         <li class='icon-with-text-container'>
-                             <i class='ss-view icon-part'></i>
-                             <div class='text-part'>
-                                 Viewed
-                                 47 times
-                             </div>
-                         </li>
-                     </ul>
-                     
-              </div>
+            <div class='feed-actions actions-menu'> <a class='request-link' href='#'> <i class='#'></i>
+              <div class='text-with-icon' id='post_new_listing'>BLA !</div></a>
             </div>
-            
-            
-            	
-            	<?php endforeach ?>
-            </div><!-- END master buble box --> 
-            
-
-        
-  
+            <div class='feed-actions actions-menu'> <a class='request-link' href='#'> <i class='#'></i>
+              <div class='text-with-icon' id='post_new_listing'>BLABLA !</div></a>
+            </div>
+                    
+          </div> <!-- End feedaction -->
         
     </div> <!-- ALTTT  END page content -->
     
@@ -180,9 +179,29 @@
 
 <!-- SCRIPTS -->
 
+<script> $(".page-content").hide();
+         $("#masterbublebox").hide();
+</script>
 
- <script>
-           var map = L.map('map').setView([48.0, 2.3], 13);
+<script> 
+$(document).ready(function(){ 
+  $(".addbox").click(function () {
+      $(this).addClass("on");
+      $("#masterbublebox").addClass("display");
+      $(".display").fadeIn(1000);
+  }); 
+  
+  $(".leaflet-popup-close-button").click(function () { 
+      console.log('hello');
+      $(".display").fadeOut(1000);
+  });
+});  
+    
+
+</script>
+
+<script>
+           var map = L.map('map').setView([48.0, 2.3], 5);
            L.tileLayer('http://{s}.tile.cloudmade.com/ffdd86e27a8a46129afb5e678456afaf/997/256/{z}/{x}/{y}.png', {
                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
                maxZoom: 18
