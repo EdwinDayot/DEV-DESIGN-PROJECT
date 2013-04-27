@@ -32,7 +32,7 @@
           <li class="menuli"><a href="<?php echo Router::url(''); ?>">Annonces</a></li>
           
           <!-- Mon Profil  -->
-          <li class="menuli"><a href="<?php echo Router::url('user/profile/id:'.$_SESSION['User']->id); ?>">Mon profil</a></li>
+          <li class="menuli"><a href="<?php echo Router::url('users/profile/id:'.$_SESSION['User']->id); ?>">Mon profil</a></li>
           
           
           <!-- Inscription  -->
