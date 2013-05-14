@@ -52,6 +52,7 @@
 						$this->request->data->type = 'asking';
 						$this->Announce->save($this->request->data);
 						$id = $this->Announce->id;
+						$this->redirect('');
 						$this->Session->setFlash('Le contenu a bien été mis à jour');
 					}
 					else{
