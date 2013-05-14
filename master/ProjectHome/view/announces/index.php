@@ -95,7 +95,7 @@
           
           <style>
           
-          #map { width: 100%; height: 600px; margin: 0 0 0 0px;
+          #map { width: 100%; height: 550px; margin: 0 0 0 0px;
           }
           
           .leaflet-popup-content-wrapper {
@@ -105,7 +105,7 @@
           .display {
               position: fixed;
               margin-top: 1%;
-              margin-left: 59%;
+              margin-left: 63%;
               z-index: 10;
           }
           
