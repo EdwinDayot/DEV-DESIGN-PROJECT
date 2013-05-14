@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php echo $users->firstname; ?><br>
 <?php echo $users->lastname; ?><br>
 <?php echo $users->address; ?>
@@ -32,3 +33,9 @@
 
 
 
+=======
+<?php debug($_SESSION); ?>
+<?php echo $user->firstname; ?><br>
+<?php echo $user->lastname; ?><br>
+<?php echo $user->address; ?>
+>>>>>>> parent of 39c48d1... Résolution BUUUUUUUUG(s)
