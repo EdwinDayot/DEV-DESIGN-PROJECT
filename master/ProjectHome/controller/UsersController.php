@@ -35,14 +35,13 @@
 			$this->loadModel('User');
 			if($this->Session->isLogged()){
 				$this->redirect('');
-				$this->Session->setFlash('Vous êtes déjà inscrit.','error');
+				$this->Session->setFlash('Vous êtes déjà inscrit','error');
 			}
 			else{
 				if($id === null){
 					$user = $this->User->findFirst(array(
-						'conditions'	=> array('rank' 	=> -1)
+						'conditions'	=> array('rank' => -1)
 						));
-					
 					if(!empty($user)){
 						$id = $user->id;
 					}
@@ -56,21 +55,12 @@
 				$d['id'] = $id;
 				if($this->request->data){
 					if($this->User->validates($this->request->data)){
-						$loginexist = $this->User->findFirst(array(
-						'conditions'	=> array('login'	=> $this->request->data->login)
-						));
-						if($loginexist->login == $this->request->data->login){
-							$this->Session->setFlash('Ce nom d\'utilisateur est déjà pris.','error');
-							$this->request->data->password = '';
-						}else{
-							$this->request->data->rank = 'normal';
-							$this->request->data->password = sha1($this->request->data->password);
-							$this->User->save($this->request->data);
-							$id = $this->User->id;
-							$this->redirect('users/signin');
-							$this->Session->setFlash('Vous vous êtes bien enregistré.');
-						}
-						
+						$this->request->data->rank = 'normal';
+						$this->request->data->password = sha1($this->request->data->password);
+						$this->User->save($this->request->data);
+						$id = $this->User->id;
+						$this->redirect('users/signin');
+						$this->Session->setFlash('Vous vous êtes bien enregistré.');
 					}
 					else{
 						$this->Session->setFlash('Certaines informations ne sont pas valides, merci de les corriger.','error');
@@ -88,19 +78,8 @@
 			
 		}
 
-		function profile($id){
-			$this->loadModel('User');
-			$d['users'] = $this->User->findFirst(array(
-					'conditions'	=> array(
-						'id' 	=> $id
-						)
-				));
-			$d['users']->address = $d['users']->street_number.' '.$d['users']->street.', '.$d['users']->zip.', '.$d['users']->city;
-
-			if(empty($d['users'])){
-				$this->e404('L\'utilisateur n\'existe pas ou plus.');
-			}
-			$this->set($d);
+		function profile(){
+			
 		}
 
 		function signout(){
@@ -109,16 +88,9 @@
 			$this->redirect('');
 		}
 
-		function admin_getUsers(){
+		function getUsers(){
 			$this->loadModel('User');
 			return $this->User->find();
-		}
-
-		function admin_getFirstname(){
-			$this->loadModel('User');
-			return $this->User->find(array(
-				'fields'			=>  'firstname'
-				));
 		}
 
 	}

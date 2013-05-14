@@ -41,7 +41,7 @@
 		}
 
 		public function isLogged(){
-			return isset($_SESSION['User']);
+			return isset($_SESSION['User']->rank);
 		}
 
 		public function user($key){

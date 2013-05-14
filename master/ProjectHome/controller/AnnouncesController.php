@@ -43,21 +43,16 @@
 			$d['id'] = $id;
 			if($this->request->data){
 				if($this->Announce->validates($this->request->data)){
+					$this->request->data->created = date('Y-m-d H:i:s');
+					$this->request->data->solved = 0;
 					if($this->Session->isLogged()){
-						$this->request->data->created = date('Y-m-d H:i:s');
-						$this->request->data->solved = 0;
-						if($this->Session->isLogged()){
-							$this->request->data->user_id = $this->Session->user('id');
-						}
-						$this->request->data->type = 'asking';
-						$this->Announce->save($this->request->data);
-						$id = $this->Announce->id;
-						$this->Session->setFlash('Le contenu a bien été mis à jour');
+						$this->request->data->user_id = $this->Session->user('id');
 					}
-					else{
-						$this->redirect('users/signin');
-					}
-					
+					$this->request->data->type = 'asking';
+					$this->Announce->save($this->request->data);
+					$id = $this->Announce->id;
+					$this->redirect('announces/index');
+					$this->Session->setFlash('Le contenu a bien été mis à jour');
 				}
 				else{
 					$this->Session->setFlash('Certaines informations ne sont pas valides, merci de les corriger.','error');
@@ -87,11 +82,6 @@
 				$this->e404('L\'annonce n\'existe pas ou plus.');
 			}
 			$this->set($d);
-		}
-
-		function getAnnounces(){
-			$this->loadModel('Announce');
-			return $this->Announce->find();
 		}
 
 	}
