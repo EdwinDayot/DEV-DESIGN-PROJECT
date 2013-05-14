@@ -32,15 +32,15 @@
           <li class="menuli"><a href="<?php echo Router::url(''); ?>">Annonces</a></li>
           
           <!-- Mon Profil  -->
-          <li class="menuli"><a href="<?php echo Router::url('users/profile/id:'.$_SESSION['User']->id); ?>">Mon profil</a></li>
+          <?php if (isset($_SESSION['User'])){ ?>
+            <li class="menuli"><a href="<?php echo Router::url('users/profile/id:'.$_SESSION['User']->id); ?>">Mon profil</a></li>
+            <li class="menuli"><a href="<?php echo Router::url('users/signout'); ?>">Logout</a></li>
+          <?php }else{ ?>
+            <!-- Inscription  -->
+            <li class="menuli"><a href="<?php echo Router::url('users/register'); ?>">S'inscrire</a></li>
+            <li class="menuli"><a href="<?php echo Router::url('users/signin'); ?>">Login</a></li>
+          <?php } ?>
           
-          
-          <!-- Inscription  -->
-          <li class="menuli"><a href="<?php echo Router::url('users/register'); ?>">S'inscrire</a></li>
-          <li class="menuli">
-          <li class="menuli"><a href="<?php echo Router::url('users/signin'); ?>">Login</a></li>
-          <!-- Deco  -->
-          <li class="menuli"><a href="<?php echo Router::url('users/signout'); ?>">Logout</a></li>
           
             <!-- Annonce Title Search  -->
             <form class="navbar-form search-area">
