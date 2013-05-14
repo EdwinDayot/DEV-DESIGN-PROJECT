@@ -105,11 +105,7 @@
           .display {
               position: fixed;
               margin-top: 1%;
-<<<<<<< HEAD
               margin-left: 59%;
-=======
-              margin-left: 63%;
->>>>>>> parent of d9bddf4... CSS display lateral bar
               z-index: 10;
           }
           
