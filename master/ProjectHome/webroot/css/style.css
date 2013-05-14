@@ -148,10 +148,9 @@ display: block;
 
 
 #header .brand, #header .nav > li > a {
-color: #999;
 text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 padding: 10px 0px 0px;
-color: #777;
+color: rgb(221, 221, 221);
 text-decoration: none;
 float: left;
 }

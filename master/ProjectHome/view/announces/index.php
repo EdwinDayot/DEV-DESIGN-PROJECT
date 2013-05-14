@@ -104,14 +104,14 @@
           
           .display {
               position: fixed;
-              margin-top: 30%;
-              margin-left: 30%;
+              margin-top: 1%;
+              margin-left: 59%;
               z-index: 10;
           }
           
           .leaflet-popup-close-button {
               margin-top: 20px;
-              margin-left: 600px;
+              margin-left: 320px;
               z-index: 15;
           }
           </style>
@@ -201,7 +201,7 @@ $(document).ready(function(){
 </script>
 
 <script>
-           var map = L.map('map').setView([48.0, 2.3], 5);
+           var map = L.map('map').setView([48.85522811385678, 2.3531341552734375 ], 13);
            L.tileLayer('http://{s}.tile.cloudmade.com/ffdd86e27a8a46129afb5e678456afaf/997/256/{z}/{x}/{y}.png', {
                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
                maxZoom: 18
