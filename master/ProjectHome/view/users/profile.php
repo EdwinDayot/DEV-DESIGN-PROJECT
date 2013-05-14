@@ -9,6 +9,7 @@
 
 <?php foreach ($announces as $a): ?>
 	<?php if ($a->user_id == $users->id): ?>
+		
 		<blockquote>
 			<b><?php echo $users->firstname.' '.$users->lastname; ?></b><br>
 			<?php echo $a->content; ?>
@@ -28,3 +29,6 @@
 		</blockquote>
 	<?php endif ?>
 <?php endforeach ?>
+
+
+
