@@ -104,8 +104,8 @@
           
           .display {
               position: fixed;
-              margin-top: 1%;
-              margin-left: 63%;
+              margin-top: 0%;
+              margin-left: 65%;
               z-index: 10;
           }
           
