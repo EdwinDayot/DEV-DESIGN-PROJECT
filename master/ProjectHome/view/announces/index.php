@@ -16,11 +16,11 @@
                         <input type="hidden" name="id" value="">                
                         <input type="hidden" name="user_id" value=""> 
                         <input type="hidden" name="lat" value="">
-                        <input type="hidden" name="lng" value="">                 
+                        <input type="hidden" name="lng" value=""> 
+                        <input type="hidden" name="user_id" value="<?php echo $_SESSION['User']->id; ?>">                
                         <a href="#"><button type="submit">Poster l'annonce !</button></a>
                         <label for="inputcontent"></label>
-                        <textarea id="inputcontent" name="content" rows="10" placeholder="Annonce"></textarea>                <label for="inputaddress"></label>
-                        <input type="text"  name="address" value="" placeholder="Location">
+                        <textarea id="inputcontent" name="content" rows="10" placeholder="Annonce"></textarea>
                         <div class="coords"></div>             
        </form>
   
@@ -95,7 +95,7 @@
           
           <style>
           
-          #map { width: 100%; height: 550px; margin: 0 0 0 0px;
+          #map { width: 100%; height: 600px; margin: 0 0 0 0px;
           }
           
           .leaflet-popup-content-wrapper {
@@ -104,17 +104,12 @@
           
           .display {
               position: fixed;
-<<<<<<< HEAD
               margin-top: 1%;
 <<<<<<< HEAD
               margin-left: 59%;
 =======
               margin-left: 63%;
 >>>>>>> parent of d9bddf4... CSS display lateral bar
-=======
-              margin-top: 0%;
-              margin-left: 65%;
->>>>>>> parent of 39c48d1... Résolution BUUUUUUUUG(s)
               z-index: 10;
           }
           
@@ -170,17 +165,7 @@
                     
           </div> <!-- End feedaction -->
         
-    </div> <!-- ALTTT  END page content -->
-    
-
-<div class="pagination">
-    <ul>
-    	<?php for($i=1; $i <= $page; $i++): ?>
-    		<li <?php if($i==$this->request->page){ echo 'class="active"'; }?>><a href="?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-    	<?php endfor; ?>
-    </ul>
-</div>
-  
+    </div> <!-- ALTTT  END page content -->  
   
 </section>  <!-- end wrapper section -->
 
